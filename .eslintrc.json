@@ -14,7 +14,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:node/recommended",
     "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
+    "plugin:react-hooks/recommended"
   ],
   "rules": {
     // Global rules
@@ -22,7 +22,7 @@
     "no-console": ["error", { "allow": ["warn", "error"]}],
     "sort-imports": [
       "error",
-      { "memberSyntaxSortOrder": ["all", "single", "multiple", "none"], "ignoreDeclarationSort": true },
+      { "memberSyntaxSortOrder": ["all", "single", "multiple", "none"], "ignoreDeclarationSort": true }
     ],
     "prefer-const": "error",
     // React rules
@@ -31,6 +31,7 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     // Node rules
+    "node/no-unsupported-features/es-syntax": "off",
     "node/exports-style": ["error", "module.exports"],
     "node/file-extension-in-import": ["error", "always"],
     "node/prefer-global/buffer": ["error", "always"],
@@ -40,5 +41,10 @@
     "node/prefer-global/url": ["error", "always"],
     "node/prefer-promises/dns": "error",
     "node/prefer-promises/fs": "error"
+  },
+  "settings": {
+    "react": {
+      "version": "16.8" // React version. "detect" automatically picks the version you have installed.
+    }
   }
 }
