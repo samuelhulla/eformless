@@ -11,10 +11,12 @@
   },
   "extends": [
     "eslint:recommended",
+    "prettier/@typescript-eslint",
     "plugin:@typescript-eslint/recommended",
     "plugin:node/recommended",
     "plugin:react/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:react-hooks/recommended",
+    "plugin:prettier/recommended"
   ],
   "rules": {
     // Global rules
