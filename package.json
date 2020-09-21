@@ -1,0 +1,22 @@
+{
+  "name": "eformless",
+  "version": "1.0.0",
+  "description": "Writing react forms has never been easier",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samuelhulla/eformless.git"
+  },
+  "keywords": [],
+  "author": "@samuelhulla",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/samuelhulla/eformless/issues"
+  },
+  "homepage": "https://github.com/samuelhulla/eformless#readme",
+  "devDependencies": {}
+}
