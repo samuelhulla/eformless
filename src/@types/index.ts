@@ -6,6 +6,7 @@ import { ChangeEvent } from 'react'
 
 export type FieldType = {
   value: unknown
+  name: string
   wasBlurred: boolean
   wasChanged: boolean
   errors?: ErrorType[]
@@ -18,8 +19,19 @@ export type FieldEvent = ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HT
 export type FieldHanderFunction = (event: FieldEvent) => void
 
 /* -------------------------------------------------------------------------- */
-/*                             2. Toggle Handling                             */
+/*                                2. Form Types                               */
 /* -------------------------------------------------------------------------- */
+
+export type FormType = {
+  fields: {
+    [fieldName: string]: FieldType
+  }
+  wasChanged: boolean
+  wasBlurred: boolean
+  allChanged: boolean
+  allBlurred: boolean
+  errors?: ErrorType[]
+}
 
 /* -------------------------------------------------------------------------- */
 /*                              3. Error Handling                             */
