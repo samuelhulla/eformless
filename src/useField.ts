@@ -9,6 +9,7 @@ const useField = (
 ): [FieldType, FieldHanderFunction, FieldHanderFunction] => {
   /* ----------------- 1. State and common const declarations ----------------- */
   const [value, setValue] = useState(input)
+  const [name, setName] = useState('')
   const [errors, setErrors] = useState<ErrorType[]>([])
   const [wasBlurred, setWasBlurred] = useState<boolean>(false)
   const [wasChanged, setWasChanged] = useState<boolean>(false)
@@ -16,6 +17,7 @@ const useField = (
   const handleChange = (event: FieldEvent) => {
     const { name, value: eventValue } = event.target
     setValue(eventValue)
+    setName(name)
     setErrors(checkErrors(value, name, checkFunctions))
     setWasChanged(true)
   }
@@ -23,12 +25,14 @@ const useField = (
   const handleBlur = (event: FieldEvent) => {
     const { name, value: eventValue } = event.target
     setValue(eventValue)
+    setName(name)
     setErrors(checkErrors(value, name, checkFunctions))
     setWasBlurred(true)
   }
 
   const field: FieldType = {
     value,
+    name,
     errors: undefinedOnEmpty(errors),
     wasBlurred,
     wasChanged,
