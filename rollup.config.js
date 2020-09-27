@@ -1,4 +1,4 @@
-import typescript from '@rollup/plugin-typescript';
+import typescript from 'rollup-plugin-typescript2'
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel'
@@ -11,7 +11,7 @@ export default {
   output: [
     { 
       file: pkg.main,
-      format: cjs,
+      format: 'cjs',
       sourcemap: true,
     },
     {
@@ -21,7 +21,9 @@ export default {
     }
   ],
   plugins: [
-    typescript(),
+    typescript({
+      tsconfig: './tsconfig.json',
+    }),
     babel({
       exclude: 'node_modules/**',
       babelHelpers: "bundled",
