@@ -1,11 +1,11 @@
 import { ErrorType } from '../@types'
 import { notNull } from './typeguards'
 
-export const invokeCheckFunction = (
-  value: unknown,
+export const invokeCheckFunction = <T>(
+  value: T,
   name: string,
   checkFunction: (...args: unknown[]) => unknown,
-): ErrorType | null => {
+): ErrorType<T> | null => {
   try {
     // we attempt invoking check function, if it passes (is OK), returns null
     checkFunction(value)
@@ -21,11 +21,11 @@ export const invokeCheckFunction = (
   }
 }
 
-export const checkErrors = (
-  value: unknown,
+export const checkErrors = <T>(
+  value: T,
   name: string,
   checkFunctions: Array<(...args: unknown[]) => unknown>,
-): ErrorType[] => {
+): ErrorType<T>[] => {
   const errors = checkFunctions.map((callback) => invokeCheckFunction(value, name, callback))
   return errors.filter(notNull)
 }

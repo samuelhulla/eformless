@@ -3,18 +3,17 @@ import { ErrorType, FieldEvent, FieldHanderFunction, FieldType } from './@types'
 import { checkErrors } from './helpers/errorChecking'
 import { undefinedOnEmpty } from './helpers/typeguards'
 
-const useField = (
-  input: unknown,
+const useField = <T>(
+  input: T,
   ...checkFunctions: Array<(...args: unknown[]) => unknown>
-): [FieldType, FieldHanderFunction, FieldHanderFunction] => {
-  /* ----------------- 1. State and common const declarations ----------------- */
+): [FieldType<T>, FieldHanderFunction<T>, FieldHanderFunction<T>] => {
   const [value, setValue] = useState(input)
   const [name, setName] = useState('')
-  const [errors, setErrors] = useState<ErrorType[]>([])
+  const [errors, setErrors] = useState<ErrorType<T>[]>([])
   const [wasBlurred, setWasBlurred] = useState<boolean>(false)
   const [wasChanged, setWasChanged] = useState<boolean>(false)
   /* -------------------- 2. Handler functions definitions -------------------- */
-  const handleChange = (event: FieldEvent) => {
+  const handleChange = (event: FieldEvent<T>) => {
     const { name, value: eventValue } = event.target
     setValue(eventValue)
     setName(name)
@@ -22,7 +21,7 @@ const useField = (
     setWasChanged(true)
   }
 
-  const handleBlur = (event: FieldEvent) => {
+  const handleBlur = (event: FieldEvent<T>) => {
     const { name, value: eventValue } = event.target
     setValue(eventValue)
     setName(name)
@@ -30,7 +29,7 @@ const useField = (
     setWasBlurred(true)
   }
 
-  const field: FieldType = {
+  const field: FieldType<T> = {
     value,
     name,
     errors: undefinedOnEmpty(errors),
