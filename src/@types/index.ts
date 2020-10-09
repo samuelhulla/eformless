@@ -12,13 +12,7 @@ export type FieldType<T> = {
   errors?: ErrorType<T>[]
 }
 
-// Event type for change function on field
-export type FieldEvent<T> = ChangeEvent<
-  { value: T; name: string } & (HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement)
->
-
-// Handler Function type for change event
-export type FieldHanderFunction<T> = (event: FieldEvent<T>) => void
+export type FieldHanderFunction = (event: ChangeEvent<HTMLInputElement>) => void
 
 /* -------------------------------------------------------------------------- */
 /*                                2. Form Types                               */
