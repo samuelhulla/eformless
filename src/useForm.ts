@@ -2,7 +2,7 @@ import { FieldType, FormType } from './@types'
 import { notUndefined } from './helpers/typeguards'
 import { flatten } from './helpers/arrays'
 
-const useForm = (...fields: FieldType[]): FormType => {
+const useForm = (...fields: FieldType<unknown>[]): FormType => {
   const groupedFields = fields.reduce(
     (fieldsObject, field) => Object.assign(fieldsObject, { [field.name]: { ...field } }),
     {},
